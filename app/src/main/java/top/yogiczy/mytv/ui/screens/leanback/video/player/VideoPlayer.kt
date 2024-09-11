@@ -6,6 +6,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.videolan.libvlc.util.VLCVideoLayout
 import top.yogiczy.mytv.ui.utils.SP
 import top.yogiczy.mytv.utils.Loggable
 
@@ -33,6 +34,9 @@ abstract class LeanbackVideoPlayer(
     abstract fun pause()
 
     abstract fun setVideoSurfaceView(surfaceView: SurfaceView)
+
+    abstract fun setVLCVideoLayout(vlcVideoLayout: VLCVideoLayout)
+
 
     private val onResolutionListeners = mutableListOf<(width: Int, height: Int) -> Unit>()
     private val onErrorListeners = mutableListOf<(error: PlaybackException?) -> Unit>()

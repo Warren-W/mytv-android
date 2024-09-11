@@ -26,6 +26,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.videolan.libvlc.util.VLCVideoLayout
 import top.yogiczy.mytv.ui.utils.SP
 import androidx.media3.common.PlaybackException as Media3PlaybackException
 
@@ -63,7 +64,7 @@ class LeanbackMedia3VideoPlayer(
             }
 
             C.CONTENT_TYPE_RTSP -> {
-                RtspMediaSource.Factory().createMediaSource(mediaItem)
+                RtspMediaSource.Factory().setTimeoutMs(20000).setUserAgent("LibVLC/3.0.20 (LIVE555 Streaming Media v2016.11.28)").createMediaSource(mediaItem)
             }
 
             C.CONTENT_TYPE_OTHER -> {
@@ -230,5 +231,9 @@ class LeanbackMedia3VideoPlayer(
 
     override fun setVideoSurfaceView(surfaceView: SurfaceView) {
         videoPlayer.setVideoSurfaceView(surfaceView)
+    }
+
+    override fun setVLCVideoLayout(vlcVideoLayout: VLCVideoLayout) {
+
     }
 }

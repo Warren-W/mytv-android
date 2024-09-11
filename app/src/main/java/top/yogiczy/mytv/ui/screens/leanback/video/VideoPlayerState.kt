@@ -14,8 +14,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.viewmodel.compose.viewModel
+import org.videolan.libvlc.util.VLCVideoLayout
+import top.yogiczy.mytv.data.utils.Constants
+import top.yogiczy.mytv.ui.screens.leanback.settings.LeanbackSettingsViewModel
 import top.yogiczy.mytv.ui.screens.leanback.video.player.LeanbackMedia3VideoPlayer
 import top.yogiczy.mytv.ui.screens.leanback.video.player.LeanbackVideoPlayer
+import top.yogiczy.mytv.ui.screens.leanback.video.player.VLCVideoPlayer
 
 /**
  * 播放器状态
@@ -49,6 +54,10 @@ class LeanbackVideoPlayerState(
 
     fun setVideoSurfaceView(surfaceView: SurfaceView) {
         instance.setVideoSurfaceView(surfaceView)
+    }
+
+    fun setVLCVideoLayout(vlcVideoLayout: VLCVideoLayout) {
+        instance.setVLCVideoLayout(vlcVideoLayout)
     }
 
     private val onReadyListeners = mutableListOf<() -> Unit>()
@@ -106,9 +115,14 @@ fun rememberLeanbackVideoPlayerState(
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
     val coroutineScope = rememberCoroutineScope()
+    val settingsViewModel: LeanbackSettingsViewModel = viewModel()
     val state = remember {
         LeanbackVideoPlayerState(
-            LeanbackMedia3VideoPlayer(context, coroutineScope),
+            when(settingsViewModel.videoPlayer){
+                Constants.VLC_VIDEO_PLAYER ->
+                    VLCVideoPlayer(context, coroutineScope)
+                else ->
+                    LeanbackMedia3VideoPlayer(context, coroutineScope)},
             defaultAspectRatioProvider = defaultAspectRatioProvider,
         )
     }

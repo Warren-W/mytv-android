@@ -112,6 +112,8 @@ dependencies {
     implementation(libs.qrose)
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar"))))
+    //vlc
+    implementation(libs.libvlc.all)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
