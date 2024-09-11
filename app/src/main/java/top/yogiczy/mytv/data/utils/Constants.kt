@@ -62,6 +62,13 @@ object Constants {
     const val VIDEO_PLAYER_USER_AGENT = "ExoPlayer"
 
     /**
+     * 播放器
+     */
+    const val DEFAULT_VIDEO_PLAYER = "ExoPlayer"
+
+    const val VLC_VIDEO_PLAYER = "VLCPlayer"
+
+    /**
      * 日志历史最大保留条数
      */
     const val LOG_HISTORY_MAX_SIZE = 50

@@ -111,6 +111,9 @@ object SP {
         /** 播放器 自定义ua */
         VIDEO_PLAYER_USER_AGENT,
 
+        /** 播放器 自定义 */
+        VIDEO_PLAYER,
+
         /** 播放器 加载超时 */
         VIDEO_PLAYER_LOAD_TIMEOUT,
 
@@ -268,6 +271,12 @@ object SP {
             Constants.VIDEO_PLAYER_USER_AGENT
         }
         set(value) = sp.edit().putString(KEY.VIDEO_PLAYER_USER_AGENT.name, value).apply()
+
+    var videoPlayer: String
+        get() = (sp.getString(KEY.VIDEO_PLAYER.name, "") ?: "").ifBlank {
+            Constants.DEFAULT_VIDEO_PLAYER
+        }
+        set(value) = sp.edit().putString(KEY.VIDEO_PLAYER.name, value).apply()
 
     /** 播放器 加载超时 */
     var videoPlayerLoadTimeout: Long
