@@ -26,17 +26,17 @@ class VLCVideoPlayer(
             }
 
             override fun onSurfacesDestroyed(vlcVout: IVLCVout) {
-                println("Surfaces destroyed: $vlcVout")
+                log.d("Surfaces destroyed")
             }
         })
         //切换频道后播放
         mediaPlayer.play()
-
     }
 
     override fun play() {
         mediaPlayer.play()
     }
+
 
     override fun pause() {
         mediaPlayer.pause()
@@ -49,8 +49,20 @@ class VLCVideoPlayer(
     override fun setVLCVideoLayout(vlcVideoLayout: VLCVideoLayout) {
         mediaPlayer.attachViews(vlcVideoLayout, null, false, false)
     }
+    override fun initialize() {
+        super.initialize()
+        mediaPlayer.setEventListener (vlcPlayerListener )
+    }
 
-
+    private val vlcPlayerListener = MediaPlayer.EventListener { event ->
+        when (event.type) {
+            MediaPlayer.Event.Vout -> triggerReady()
+            MediaPlayer.Event.Buffering -> {
+                triggerError(null)
+                triggerBuffering(true)
+            }
+        }
+    }
 }
 
 

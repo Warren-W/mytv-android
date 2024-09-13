@@ -64,7 +64,7 @@ class LeanbackMedia3VideoPlayer(
             }
 
             C.CONTENT_TYPE_RTSP -> {
-                RtspMediaSource.Factory().setTimeoutMs(20000).setUserAgent("LibVLC/3.0.20 (LIVE555 Streaming Media v2016.11.28)").createMediaSource(mediaItem)
+                RtspMediaSource.Factory().createMediaSource(mediaItem)
             }
 
             C.CONTENT_TYPE_OTHER -> {
