@@ -23,7 +23,7 @@ android {
         minSdk = 21
         targetSdk = 34
         versionCode = 1
-        versionName = "1.4.4"
+        versionName = "1.4.4.gsy"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -112,6 +112,9 @@ dependencies {
     implementation(libs.qrose)
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar"))))
+
+    implementation(libs.gsyvideoplayer.java)
+    implementation(libs.gsyvideoplayer.ex.so)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

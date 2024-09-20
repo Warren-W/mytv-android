@@ -10,6 +10,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.tv.foundation.lazy.list.TvLazyColumn
+import top.yogiczy.mytv.data.utils.Constants
 import top.yogiczy.mytv.ui.screens.leanback.settings.LeanbackSettingsViewModel
 import top.yogiczy.mytv.ui.theme.LeanbackTheme
 import top.yogiczy.mytv.ui.utils.SP
@@ -66,6 +67,34 @@ fun LeanbackSettingsCategoryVideoPlayer(
                 headlineContent = "播放器自定义UA",
                 supportingContent = settingsViewModel.videoPlayerUserAgent,
                 remoteConfig = true,
+            )
+        }
+
+        item {
+            LeanbackSettingsCategoryListItem(
+                headlineContent = "播放器选择",
+                supportingContent = "切换后重启应用",
+                trailingContent = settingsViewModel.videoPlayer,
+                onSelected = {
+                    when(settingsViewModel.videoPlayer){
+                        Constants.DEFAULT_VIDEO_PLAYER-> settingsViewModel.videoPlayer = Constants.GSY_VIDEO_PLAYER
+                        else -> settingsViewModel.videoPlayer =Constants.DEFAULT_VIDEO_PLAYER
+                    }
+                }
+            )
+        }
+
+        item {
+            LeanbackSettingsCategoryListItem(
+                headlineContent = "播放器通信协议选择",
+                supportingContent = "切换后重启应用",
+                trailingContent = settingsViewModel.videoPlayerProtocol,
+                onSelected = {
+                    when(settingsViewModel.videoPlayerProtocol){
+                        Constants.DEFAULT_PLAYER_PROTOCOL-> settingsViewModel.videoPlayerProtocol = Constants.TCP_PLAYER_PROTOCOL
+                        else -> settingsViewModel.videoPlayerProtocol =Constants.DEFAULT_PLAYER_PROTOCOL
+                    }
+                }
             )
         }
     }

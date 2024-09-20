@@ -2,6 +2,7 @@ package top.yogiczy.mytv.ui.screens.leanback.video.player
 
 import android.view.SurfaceView
 import androidx.media3.common.PlaybackException
+import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -33,6 +34,8 @@ abstract class LeanbackVideoPlayer(
     abstract fun pause()
 
     abstract fun setVideoSurfaceView(surfaceView: SurfaceView)
+
+    abstract fun setGSYView(gsyView: TVGSYVideoPlayer)
 
     private val onResolutionListeners = mutableListOf<(width: Int, height: Int) -> Unit>()
     private val onErrorListeners = mutableListOf<(error: PlaybackException?) -> Unit>()

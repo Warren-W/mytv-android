@@ -114,6 +114,12 @@ object SP {
         /** 播放器 加载超时 */
         VIDEO_PLAYER_LOAD_TIMEOUT,
 
+        /** 播放器 自定义 */
+        VIDEO_PLAYER,
+
+        /** 播放器 自定义 */
+        VIDEO_PLAYER_PROTOCOL,
+
         /** 播放器 画面比例 */
         VIDEO_PLAYER_ASPECT_RATIO,
     }
@@ -273,6 +279,18 @@ object SP {
     var videoPlayerLoadTimeout: Long
         get() = sp.getLong(KEY.VIDEO_PLAYER_LOAD_TIMEOUT.name, Constants.VIDEO_PLAYER_LOAD_TIMEOUT)
         set(value) = sp.edit().putLong(KEY.VIDEO_PLAYER_LOAD_TIMEOUT.name, value).apply()
+
+    var videoPlayer: String
+        get() = (sp.getString(KEY.VIDEO_PLAYER.name, "") ?: "").ifBlank {
+            Constants.DEFAULT_VIDEO_PLAYER
+        }
+        set(value) = sp.edit().putString(KEY.VIDEO_PLAYER.name, value).apply()
+
+    var videoPlayerProtocol: String
+        get() = (sp.getString(KEY.VIDEO_PLAYER_PROTOCOL.name, "") ?: "").ifBlank {
+            Constants.DEFAULT_PLAYER_PROTOCOL
+        }
+        set(value) = sp.edit().putString(KEY.VIDEO_PLAYER_PROTOCOL.name, value).apply()
 
     /** 播放器 画面比例 */
     var videoPlayerAspectRatio: VideoPlayerAspectRatio

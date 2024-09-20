@@ -22,6 +22,7 @@ import androidx.media3.exoplayer.hls.HlsMediaSource
 import androidx.media3.exoplayer.rtsp.RtspMediaSource
 import androidx.media3.exoplayer.source.ProgressiveMediaSource
 import androidx.media3.exoplayer.util.EventLogger
+import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -230,5 +231,9 @@ class LeanbackMedia3VideoPlayer(
 
     override fun setVideoSurfaceView(surfaceView: SurfaceView) {
         videoPlayer.setVideoSurfaceView(surfaceView)
+    }
+
+    override fun setGSYView(gsyView: TVGSYVideoPlayer) {
+
     }
 }

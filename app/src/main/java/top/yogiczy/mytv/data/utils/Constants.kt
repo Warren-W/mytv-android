@@ -18,7 +18,7 @@ object Constants {
      * IPTV源地址
      */
     const val IPTV_SOURCE_URL =
-        "https://mirror.ghproxy.com/https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u"
+        "http://192.168.88.182/lynnrin/iptv/latest.m3u"
 
     /**
      * IPTV源缓存时间（毫秒）
@@ -39,7 +39,7 @@ object Constants {
      * Git最新版本信息
      */
     const val GIT_RELEASE_LATEST_URL =
-        "https://api.github.com/repos/yaoxieyoulei/mytv-android/releases/latest"
+        "https://ghp.ci/https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u"
 
     /**
      * GitHub加速代理地址
@@ -60,6 +60,17 @@ object Constants {
      * 播放器 userAgent
      */
     const val VIDEO_PLAYER_USER_AGENT = "ExoPlayer"
+
+    /**
+     * 播放器
+     */
+    const val DEFAULT_VIDEO_PLAYER = "ExoPlayer"
+
+    const val GSY_VIDEO_PLAYER = "GSYPlayer"
+
+    const val DEFAULT_PLAYER_PROTOCOL = "UDP"
+
+    const val TCP_PLAYER_PROTOCOL = "TCP"
 
     /**
      * 日志历史最大保留条数
