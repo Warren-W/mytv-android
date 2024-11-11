@@ -19,7 +19,9 @@ class VLCVideoPlayer(
     private val mediaPlayer = MediaPlayer(libVLC)
     override fun prepare(url: String) {
         val media = Media(mediaPlayer.libVLC, Uri.parse(url))
+        media.addOption(":rtsp-tcp")
         mediaPlayer.media = media
+
         mediaPlayer.vlcVout.addCallback(object : IVLCVout.Callback {
             override fun onSurfacesCreated(vlcVout: IVLCVout) {
                 mediaPlayer.play()

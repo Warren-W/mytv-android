@@ -8,7 +8,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
 }
 
-val keystorePropertiesFile = rootProject.file("key.properties")
+val keystorePropertiesFile = file("key.properties")
 val keystoreProperties = Properties()
 if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(FileInputStream(keystorePropertiesFile))
@@ -23,7 +23,7 @@ android {
         minSdk = 21
         targetSdk = 34
         versionCode = 1
-        versionName = "1.4.4"
+        versionName = "1.4.5.vlc"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -113,7 +113,8 @@ dependencies {
 
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar"))))
     //vlc
-    implementation(libs.libvlc.all)
+    //implementation(libs.libvlc.all)
+    implementation(files("libs/libvlc-all-3.4.9.aar"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

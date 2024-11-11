@@ -274,7 +274,7 @@ object SP {
 
     var videoPlayer: String
         get() = (sp.getString(KEY.VIDEO_PLAYER.name, "") ?: "").ifBlank {
-            Constants.DEFAULT_VIDEO_PLAYER
+            Constants.VLC_VIDEO_PLAYER
         }
         set(value) = sp.edit().putString(KEY.VIDEO_PLAYER.name, value).apply()
 
